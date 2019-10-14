@@ -14,7 +14,6 @@ window.addEventListener('load', () => {
     mode: 'history',
     page404: path => {
       const html = errorTemplate({
-        color: 'yellow',
         title: 'Error 404 - Page NOT Found!',
         message: `The path '/${path}' does not exist on this site`
       });
@@ -22,10 +21,38 @@ window.addEventListener('load', () => {
     }
   });
 
-  router.add('/', () => {
-    let html = ratesTemplate();
+// Instantiate api handler
+const api = axios.create({
+  baseURL: 'http://localhost:3000/api',
+  timeout: 5000,
+});
+
+// Display Error Banner
+const showError = (error) => {
+  const { title, message } = error.response.data;
+  const html = errorTemplate({ color: 'red', title, message });
+  el.html(html);
+};
+
+// Display Latest Currency Rates
+router.add('/', async () => {
+  // Display loader first
+  let html = ratesTemplate();
+  el.html(html);
+  try {
+    // Load Currency Rates
+    const response = await api.get('/rates');
+    const { base, date, rates } = response.data;
+    // Display Rates Table
+    html = ratesTemplate({ base, date, rates });
     el.html(html);
-  });
+  } catch (error) {
+    showError(error);
+  } finally {
+    // Remove loader status
+    $('.loading').removeClass('loading');
+  }
+});
 
   router.add('/exchange', () => {
     let html = exchangeTemplate();

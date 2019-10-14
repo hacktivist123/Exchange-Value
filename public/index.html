@@ -44,7 +44,7 @@
   <div class="ui blue inverted" style="height:512px;">
       <br>
       <h2 class="ui center aligned icon header">
-        <i class="exclamation blue triangle icon" style="size: 100px"></i>
+        <i class="exclamation red triangle icon" style="size: 100px"></i>
         <div class="content">
           {{title}}
           <div class="sub header">{{message}}</div>
@@ -55,8 +55,43 @@
 
   <!-- Currency Rates Template -->
   <script id="rates-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Currency Rates</h1>
-      <hr>
+    <h1 class="ui header">Currency Rates</h1>
+    <hr>
+    <div class="ui loading basic segment">
+      <div class="ui horizontal list">
+        <div class="item">
+          <i class="calendar alternate outline icon"></i>
+          <div class="content">
+            <div class="ui sub header">Date</div>
+            <span>{{date}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <i class="money bill alternate outline icon"></i>
+          <div class="content">
+            <div class="ui sub header">Base</div>
+            <span>{{base}}</span>
+          </div>
+        </div>
+      </div>
+  
+      <table class="ui blue celled selectable inverted table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each rates}}
+          <tr>
+            <td>{{@key}}</td>
+            <td>{{this}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </script>
 
   <!-- Exchange Conversion Template -->
