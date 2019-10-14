@@ -122,7 +122,7 @@ window.addEventListener('load', () => {
       $('.segment').removeClass('loading');
     }
   };
-  
+
   const historicalRatesHandler = () => {
     if ($('.ui.form').form('is valid')) {
       // hide error message
@@ -135,19 +135,17 @@ window.addEventListener('load', () => {
     }
     return true;
   };
-  
+
   router.add('/historical', () => {
-    // Display form
     const html = historicalTemplate();
     el.html(html);
     // Activate Date Picker
     $('#calendar').calendar({
       type: 'date',
-      formatter: { //format date to yyyy-mm-dd
+      formatter: {
         date: date => new Date(date).toISOString().split('T')[0],
       },
     });
-    // Validate Date input
     $('.ui.form').form({
       fields: {
         date: 'empty',
