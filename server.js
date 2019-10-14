@@ -3,6 +3,7 @@ const express = require('express');
 
 const app = express();  //initialize express app
 const port = process.env.PORT || 3000;
+const { getRates } = require('./lib/apiService');
 
 //set public folder as root
 app.use(express.static('public'));
@@ -18,4 +19,10 @@ app.listen(port, () => {
   console.log('listening on localhost:',port);
 });
 
+const test = async() => {
+  const data = await getRates();
+  console.log(data);
+}
+
+test();
 
