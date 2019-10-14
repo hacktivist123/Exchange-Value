@@ -3,13 +3,23 @@ const express = require('express');
 
 const app = express(); //initialize express app
 const port = process.env.PORT || 3000;
-const { getRates } = require('./lib/apiService');
+const bodyParser = require('body-parser');
+const { getRates, getSymbols } = require('./lib/apiService');
+const { convertCurrency } = require('./lib/free-currency-service');
 
 //set public folder as root
 app.use(express.static('public'));
 
 // Allow front-end access to node_modules folder
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
+
+// Parse POST data as URL encoded data
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
+// Parse POST data as JSON
+app.use(bodyParser.json());
 
 // Express Error handler
 const errorHandler = (err, req, res) => {
@@ -21,12 +31,10 @@ const errorHandler = (err, req, res) => {
       .send({ title: 'Server responded with an error', message: err.message });
   } else if (err.request) {
     // The request was made but no response was received
-    res
-      .status(503)
-      .send({
-        title: 'Unable to communicate with server',
-        message: err.message
-      });
+    res.status(503).send({
+      title: 'Unable to communicate with server',
+      message: err.message
+    });
   } else {
     // Something happened in setting up the request that triggered an Error
     res
@@ -39,6 +47,29 @@ const errorHandler = (err, req, res) => {
 app.get('/api/rates', async (req, res) => {
   try {
     const data = await getRates();
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  } catch (error) {
+    errorHandler(error, req, res);
+  }
+});
+
+// Fetch Symbols
+app.get('/api/symbols', async (req, res) => {
+  try {
+    const data = await getSymbols();
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  } catch (error) {
+    errorHandler(error, req, res);
+  }
+});
+
+// Convert Currency
+app.post('/api/convert', async (req, res) => {
+  try {
+    const { from, to } = req.body;
+    const data = await convertCurrency(from, to);
     res.setHeader('Content-Type', 'application/json');
     res.send(data);
   } catch (error) {
