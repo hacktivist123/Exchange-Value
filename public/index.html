@@ -39,53 +39,76 @@
       <div id="app"></div>
     </div>
     <script id="error-template" type="text/x-handlebars-template">
-      <div class="ui blue inverted" style="height:512px;">
-          <br>
-          <h2 class="ui center aligned icon header">
-            <i class="exclamation red triangle icon"></i>
-            <div class="content">
-              {{title}}
-              <div class="sub header">{{message}}</div>
+      <div class='ui blue inverted' style='height:512px;'>
+        <br />
+        <h2 class='ui center aligned icon header'>
+          <i class='exclamation red triangle icon'></i>
+          <div class='content'>
+            {{title}}
+            <div class='sub header'>
+              {{message}}
             </div>
-          </h2>
+          </div>
+        </h2>
       </div>
     </script>
 
     <!-- Currency Rates Template -->
     <script id="rates-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Currency Rates</h1>
-      <hr>
-      <div class="ui loading basic segment">
-        <div class="ui horizontal list">
-          <div class="item">
-            <div class="content">
-              <i class="calendar alternate outline icon"></i>
-              <div class="ui sub header">Date</div>
-              <span>{{date}}</span>
+      <h1 class='ui header'>
+        Currency Rates
+      </h1>
+      <hr />
+      <div class='ui loading basic segment'>
+        <div class='ui horizontal list'>
+          <div class='item'>
+            <div class='content'>
+              <i class='calendar alternate outline icon'></i>
+              <div class='ui sub header'>
+                Date
+              </div>
+              <span>
+                {{date}}
+              </span>
             </div>
           </div>
-          <div class="item">
-            <div class="content">
-               <i class="money bill alternate outline icon"></i>
-              <div class="ui sub header">Base</div>
-              <span>{{base}}</span>
+          <div class='item'>
+            <div class='content'>
+              <i class='money bill alternate outline icon'></i>
+              <div class='ui sub header'>
+                Base
+              </div>
+              <span>
+                {{base}}
+              </span>
             </div>
           </div>
         </div>
 
-        <table class="ui blue celled selectable inverted table" style="width:100%; margin-left:-1%; margin-right: -1%">
+        <table
+          class='ui blue celled selectable inverted table'
+          style='width:100%; margin-left:-1%; margin-right: -1%'
+        >
           <thead>
             <tr>
-              <th>Code</th>
-              <th>Rate</th>
+              <th>
+                Code
+              </th>
+              <th>
+                Rate
+              </th>
             </tr>
           </thead>
           <tbody>
             {{#each rates}}
-            <tr>
-              <td>{{@key}}</td>
-              <td>{{this}}</td>
-            </tr>
+              <tr>
+                <td>
+                  {{@key}}
+                </td>
+                <td>
+                  {{this}}
+                </td>
+              </tr>
             {{/each}}
           </tbody>
         </table>
@@ -94,67 +117,95 @@
 
     <!-- Exchange Conversion Template -->
     <script id="exchange-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Exchange Rate</h1>
-      <hr>
-      <div class="ui basic loading segment">
-        <form class="ui form">
-          <div class="three fields">
-            <div class="field">
-              <label>From</label>
-              <select class="ui dropdown" name="from" id="from">
-                <option value="">Select Currency</option>
+      <h1 class='ui header'>
+        Exchange Rate
+      </h1>
+      <hr />
+      <div class='ui basic loading segment'>
+        <form class='ui form'>
+          <div class='three fields'>
+            <div class='field'>
+              <label>
+                From
+              </label>
+              <select class='ui dropdown' name='from' id='from'>
+                <option value=''>
+                  Select Currency
+                </option>
                 {{#each symbols}}
-                <option value="{{@key}}">{{this}}</option>
+                  <option value="{{@key}}">
+                    {{this}}
+                  </option>
                 {{/each}}
               </select>
             </div>
-            <div class="field">
-              <label>To</label>
-              <select class="ui dropdown" name="to" id="to">
-                <option value="">Select Currency</option>
+            <div class='field'>
+              <label>
+                To
+              </label>
+              <select class='ui dropdown' name='to' id='to'>
+                <option value=''>
+                  Select Currency
+                </option>
                 {{#each symbols}}
-                <option value="{{@key}}">{{this}}</option>
+                  <option value="{{@key}}">
+                    {{this}}
+                  </option>
                 {{/each}}
               </select>
             </div>
-            <div class="field">
-              <label>Amount</label>
-              <input type="number" name="amount" id="amount" placeholder="Enter amount">
+            <div class='field'>
+              <label>
+                Amount
+              </label>
+              <input
+                type='number'
+                name='amount'
+                id='amount'
+                placeholder='Enter amount'
+              />
             </div>
           </div>
-          <div class="ui primary submit button">Convert</div>
-          <div class="ui error message"></div>
+          <div class='ui primary submit button'>
+            Convert
+          </div>
+          <div class='ui error message'></div>
         </form>
-        <br>
-        <div id="result-segment" class="ui center aligned segment">
-          <h2 id="result" class="ui header">
+        <br />
+        <div id='result-segment' class='ui center aligned segment'>
+          <h2 id='result' class='ui header'>
             0.00
           </h2>
         </div>
       </div>
     </script>
 
-
     <!-- Historical Template -->
     <script id="historical-template" type="text/x-handlebars-template">
-      <h1 class="ui header">Historical Rates</h1>
-      <hr>
-      <form class="ui form">
-        <div class="field">
-          <label>Pick Date</label>
-          <div class="ui calendar" id="calendar">
-            <div class="ui input left icon">
-              <i class="calendar icon"></i>
-              <input type="text" placeholder="Date" id="date">
+      <h1 class='ui header'>
+        Historical Rates
+      </h1>
+      <hr />
+      <form class='ui form'>
+        <div class='field'>
+          <label>
+            Pick Date
+          </label>
+          <div class='ui calendar' id='calendar'>
+            <div class='ui input left icon'>
+              <i class='calendar icon'></i>
+              <input type='text' placeholder='Date' id='date' />
             </div>
           </div>
         </div>
-        <div class="ui primary submit button">Fetch Rates</div>
-        <div class="ui error message"></div>
+        <div class='ui primary submit button'>
+          Fetch Rates
+        </div>
+        <div class='ui error message'></div>
       </form>
 
-      <div class="ui basic segment">
-        <div id="historical-table"></div>
+      <div class='ui basic segment'>
+        <div id='historical-table'></div>
       </div>
     </script>
     <!-- JS Library Dependencies -->

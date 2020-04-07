@@ -1,7 +1,8 @@
 {
-  "name": "Exchange-Rate-SPA",
+  "name": "exchange-value",
   "version": "1.0.0",
   "description": "",
+  "repository": "https://github.com/hacktivist123/Exchange-Value",
   "main": "server.js",
   "directories": {
     "lib": "lib"
@@ -14,16 +15,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "handlebars": "^4.4.3",
+    "handlebars": "^4.7.6",
     "jquery": "^3.4.1",
-    "nodemon": "^1.19.3",
+    "nodemon": "^1.19.4",
     "number-format.js": "^2.0.9",
     "semantic-ui-calendar": "0.0.8",
     "semantic-ui-css": "^2.4.1",
-    "vanilla-router": "^1.2.7"
+    "vanilla-router": "^1.2.8"
   }
 }

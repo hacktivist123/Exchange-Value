@@ -5,7 +5,9 @@ window.addEventListener('load', () => {
   const errorTemplate = Handlebars.compile($('#error-template').html());
   const ratesTemplate = Handlebars.compile($('#rates-template').html());
   const exchangeTemplate = Handlebars.compile($('#exchange-template').html());
-  const historicalTemplate = Handlebars.compile($('#historical-template').html());
+  const historicalTemplate = Handlebars.compile(
+    $('#historical-template').html()
+  );
 
   // Instantiate api handler
   const api = axios.create({
@@ -61,7 +63,9 @@ window.addEventListener('load', () => {
       const response = await api.post('/convert', { from, to });
       const { rate } = response.data;
       const result = rate * amount;
-      $('#result').html(`${to} ${result.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`);
+      $('#result').html(
+        `${to} ${result.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
+      );
     } catch (error) {
       showError(error);
     } finally {
@@ -143,7 +147,7 @@ window.addEventListener('load', () => {
     $('#calendar').calendar({
       type: 'date',
       formatter: {
-        date: date => new Date(date).toISOString().split('T')[0],
+        date: (date) => new Date(date).toISOString().split('T')[0],
       },
     });
     $('.ui.form').form({

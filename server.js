@@ -11,9 +11,11 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 // Parse POST data as URL encoded data
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 // Parse POST data as JSON
 app.use(bodyParser.json());
@@ -21,18 +23,24 @@ app.use(bodyParser.json());
 // Provide access to node_modules folder
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
-
 const errorHandler = (err, req, res) => {
   if (err.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
-    res.status(403).send({ title: 'Server responded with an error', message: err.message });
+    res
+      .status(403)
+      .send({ title: 'Server responded with an error', message: err.message });
   } else if (err.request) {
     // The request was made but no response was received
-    res.status(503).send({ title: 'Unable to communicate with server', message: err.message });
+    res.status(503).send({
+      title: 'Unable to communicate with server',
+      message: err.message,
+    });
   } else {
     // Something happened in setting up the request that triggered an Error
-    res.status(500).send({ title: 'An unexpected error occurred', message: err.message });
+    res
+      .status(500)
+      .send({ title: 'An unexpected error occurred', message: err.message });
   }
 };
 
@@ -80,7 +88,6 @@ app.post('/api/historical', async (req, res) => {
   } catch (error) {
     errorHandler(error, req, res);
   }
-
 });
 
 // Listen for HTTP requests on port 3000
