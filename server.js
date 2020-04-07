@@ -94,6 +94,7 @@ app.post('/api/historical', async (req, res) => {
 app.listen(port, () => {
   console.log('listening on localhost:', port);
 });
+
 //TEST
 // const test = async() => {
 //   const data = await getHistoricalRate('2012-07-14');
