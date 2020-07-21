@@ -1,0 +1,5 @@
+---
+applications:
+  - name: exchange-value-spa
+  - command: node server.js
+  - memory: 512M
