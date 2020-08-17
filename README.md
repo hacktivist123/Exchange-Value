@@ -21,3 +21,6 @@ nodemon
 
 localhost:3000
 ```
+
+### Credit
+The code in this repository is from [Michael Wanyoike](https://github.com/brandiqa)'s [tutorial](https://www.sitepoint.com/single-page-app-without-framework/) on Site Point.
