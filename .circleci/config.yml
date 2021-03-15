@@ -8,6 +8,7 @@ jobs:
           - run: sudo touch /etc/apt/sources.list.d/cloudfoundry-cli.list
           - run: echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" | sudo tee -a /etc/apt/sources.list.d/cloudfoundry-cli.list
           - run: sudo apt-get update
+          - run: sudo apt-get install dpkg
           - run: sudo apt-get install cf7-cli
 
   login-and-deploy:
