@@ -1,15 +1,15 @@
 version: 2.0
 jobs:
-  machine:
-   image: ubuntu-1604:202007-01
   install-cf:
-   steps: 
+    machine: true
+    steps: 
           - run: sudo apt-get update
           - run: sudo apt-get install -y ca-certificates jq
           - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
           - run: sudo dpkg -i cf-cli_amd64.deb
 
   login-and-deploy:
+    machine: true
     steps:
           - run: cf -v
           - run: cf api --skip-ssl-validation "$CF_API"
