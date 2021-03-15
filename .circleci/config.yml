@@ -11,7 +11,9 @@ workflows:
       - cloudfoundry/push:
           appname: exchange-value
           endpoint: $CF_API --skip-ssl-validation
-          # Set Organization
+          build_steps:
+            - run: brew link --overwrite cf-cli@7
+          # Set Orgnization
           org: $CF_ORG
           # Set Space
           space: dev
