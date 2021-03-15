@@ -12,7 +12,7 @@ workflows:
           appname: exchange-value
           build_steps:
             - cloudfoundry/install:
-                version: '7' # Install Cloud Foundry CLI Version 7
+                version: '6' # Install Cloud Foundry CLI Version 6
           # set Cloud Foundry Instance Endpoint
           endpoint: $CF_API --skip-ssl-validation
           # Set Organization
