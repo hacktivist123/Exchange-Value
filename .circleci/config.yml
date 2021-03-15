@@ -12,6 +12,8 @@ jobs:
           - run: sudo apt-get install cf7-cli
 
   login-and-deploy:
+    requires:
+      - install-cf
     machine: true
     steps:
           - run: cf -v
