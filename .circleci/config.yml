@@ -11,7 +11,8 @@ workflows:
       - cloudfoundry/push:
           appname: exchange-value
           build_steps:
-            - cloudfoundry/install
+            - cloudfoundry/install:
+              version: '7'
           endpoint: $CF_API
           # Set Organization
           org: $CF_ORG
