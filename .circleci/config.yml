@@ -11,10 +11,9 @@ workflows:
       - cloudfoundry/push:
           appname: exchange-value
           build_steps:
-            - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-                   echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-            - run: sudo apt-get update
-            - run: sudo apt-get install cf7-cli
+            - cloudfoundry/install:
+              platform: 'macosx'
+              version: '7'
           endpoint: $CF_API --skip-ssl-validation
           # Set Organization
           org: $CF_ORG
