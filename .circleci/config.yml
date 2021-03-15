@@ -1,5 +1,7 @@
 version: 2.0
 jobs:
+  machine:
+   image: ubuntu-1604:202007-01
   install-cf:
    steps: 
           - run: sudo apt-get update
