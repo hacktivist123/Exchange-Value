@@ -5,7 +5,7 @@ jobs:
     steps: 
           - run: sudo apt-get update
           - run: sudo apt-get install -y ca-certificates jq
-          - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+          - run: echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" > /etc/apt/sources.list.d/cloudfoundry-cli.list
           - run: sudo dpkg -i cf-cli_amd64.deb
 
   login-and-deploy:
