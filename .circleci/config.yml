@@ -1,17 +1,13 @@
 version: 2.0
 jobs:
   install-cf:
-   docker:
-     - image: alpine:3.7
    steps: 
-          - run: apt-get update
-          - run: apt-get install -y ca-certificates jq
+          - run: sudo apt-get update
+          - run: sudo apt-get install -y ca-certificates jq
           - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
           - run: sudo dpkg -i cf-cli_amd64.deb
 
   login-and-deploy:
-    docker:
-      - image: alpine:3.7
     steps:
           - run: cf -v
           - run: cf api --skip-ssl-validation "$CF_API"
