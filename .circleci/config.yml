@@ -10,7 +10,7 @@ workflows:
     jobs:
       - cloudfoundry/push:
           appname: exchange-value
-          endpoint: '$CF_API --skip-ssl-validation'
+          endpoint: $CF_API --skip-ssl-validation
           # Set Orgnization
           org: $CF_ORG
           # Set Space
