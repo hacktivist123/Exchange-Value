@@ -6,12 +6,12 @@ orbs:
   cloudfoundry: circleci/cloudfoundry@1.0.0
 # Orchestrate or schedule a set of jobs
 workflows:
-  build-deploy:
+  cf-build-deploy:
     jobs:
       - cloudfoundry/push:
           appname: exchange-value
           build_steps:
-            - run: cloudfoundry/install
+            - cloudfoundry/install
           endpoint: $CF_API
           # Set Organization
           org: $CF_ORG
