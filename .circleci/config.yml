@@ -12,7 +12,7 @@ workflows:
             - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             - run: sudo dpkg -i cf-cli_amd64.deb
             - run: cf -v
-            - run: cf api "$CF_API"
+            - run: cf api --skip-ssl-validation "$CF_API"
             - run: cf auth "$CF_USER" "$CF_PASSWORD"
             - run: cf push exchange-value
           org: sampleOrg
