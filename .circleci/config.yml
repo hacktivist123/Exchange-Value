@@ -1,19 +1,29 @@
-version: '2.1'
-orbs:
-  cloudfoundry: circleci/cloudfoundry@1.0.0
+version: 2.0
+jobs:
+  install-cf:
+   docker:
+     - image: alpine:3.7
+   steps: 
+          - run: sudo apt-get update
+          - run: sudo apt-get install -y ca-certificates jq
+          - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+          - run: sudo dpkg -i cf-cli_amd64.deb
+
+  login-and-deploy:
+    docker:
+      - image: alpine:3.7
+    steps:
+          - run: cf -v
+          - run: cf api --skip-ssl-validation "$CF_API"
+          - run: cf auth "$CF_USER" "$CF_PASSWORD"
+          - run: cf target -o "$CF_ORG" "$CF_SPACE"
+          - run: cf push exchange-value
+
 workflows:
-  build-deploy:
+  version: 2
+  deploy-to-cf:
     jobs:
-      - cloudfoundry/push:
-          appname: exchange-value
-          build_steps:
-            - run: sudo apt-get update
-            - run: sudo apt-get install -y ca-certificates jq
-            - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-            - run: sudo dpkg -i cf-cli_amd64.deb
-            - run: cf -v
-            - run: cf api --skip-ssl-validation "$CF_API"
-            - run: cf auth "$CF_USER" "$CF_PASSWORD"
-            - run: cf push exchange-value
-          org: sampleOrg
-          space: dev
+      - install-cf
+      - login-and-deploy:
+          requires:
+          - install-cf
