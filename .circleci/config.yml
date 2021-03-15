@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - checkout 
       - run: sudo apt-get update
       - run: sudo apt-get install -y ca-certificates jq
       - run: sudo touch /etc/apt/sources.list.d/cloudfoundry-cli.list
