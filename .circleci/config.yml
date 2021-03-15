@@ -12,9 +12,9 @@ workflows:
           appname: exchange-value
           build_steps:
             - cloudfoundry/install:
-                platform: 'macosx'
-                version: '7'
-          endpoint: $CF_API --skip-ssl-validation
+                platform: 'linux'
+                version: '6'
+            - run: cf api $CF_API --skip-ssl-validation
           # Set Organization
           org: $CF_ORG
           # Set Space
