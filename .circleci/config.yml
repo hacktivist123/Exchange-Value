@@ -20,7 +20,6 @@ jobs:
       - run: cf set-env exchange-value API_KEY $API_KEY
       - run: cf set-env exchange-value CONVERTER_API_KEY $CONVERTER_API_KEY
       - run: cf set-env exchange-value SYMBOLS $SYMBOLS
-      - run: cf set-env exchange-value TIMEOUT $TIMEOUT
       - run: cf push exchange-value
 
 workflows:
