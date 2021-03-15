@@ -5,9 +5,9 @@ workflows:
   build-deploy:
     jobs:
       - cloudfoundry/push:
-          appname: your-app
+          appname: exchange-value
           build_steps:
-            - run: cf api --skip-ssl-validation "$CF_API"
-            - run: cf auth "$CF_USER" "$CF_USER"
+            - run: workspace_path
+          endpoint: $CF_API
           org: sampleOrg
           space: dev
