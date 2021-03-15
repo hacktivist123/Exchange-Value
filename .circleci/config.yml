@@ -14,7 +14,7 @@ workflows:
             - cloudfoundry/install:
               platform: 'macosx'
               version: '7'
-          endpoint: $CF_API --skip-ssl-validation
+          endpoint: 'http://api.35.192.46.62.xip.io --skip-ssl-validation'
           # Set Organization
           org: $CF_ORG
           # Set Space
