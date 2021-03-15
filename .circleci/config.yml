@@ -6,8 +6,6 @@ workflows:
     jobs:
       - cloudfoundry/push:
           appname: exchange-value
-          build_steps:
-            - run: workspace_path
           endpoint: $CF_API
           org: sampleOrg
           space: dev
