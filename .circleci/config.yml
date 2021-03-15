@@ -1,0 +1,31 @@
+version: '2.1'
+
+jobs:
+  install-login-deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout 
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y ca-certificates jq
+      - run: sudo touch /etc/apt/sources.list.d/cloudfoundry-cli.list
+      - run: echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" | sudo tee -a /etc/apt/sources.list.d/cloudfoundry-cli.list
+      - run: sudo apt-get update
+      - run: sudo apt-get install dpkg
+      - run: sudo apt-get install cf7-cli
+      - run: cf -v
+      - run: cf api --skip-ssl-validation "$CF_API"
+      - run: cf auth "$CF_USER" "$CF_PASSWORD"
+      - run: cf target -o "$CF_ORG"
+      - run: cf set-env exchange-value API_KEY $API_KEY
+      - run: cf set-env exchange-value CONVERTER_API_KEY $CONVERTER_API_KEY
+      - run: cf set-env exchange-value SYMBOLS $SYMBOLS
+      - run: cf push exchange-value
+
+workflows:
+    version: 2
+    cloudfoundry-deploy:
+      jobs:
+        - install-login-deploy
+
+
