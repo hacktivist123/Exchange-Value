@@ -1,7 +1,15 @@
-version: 2.1
+version: '2.1'
 orbs:
-  node: circleci/node@3.0.0
+  cloudfoundry: circleci/cloudfoundry@1.0.0
 workflows:
-  node-tests:
+  build-deploy:
     jobs:
-      - node/test
+      - cloudfoundry/push:
+          appname: exchange-value
+          build_steps:
+            - run: cf -v
+            - run: cf api https://api.35.192.46.62.xip.io
+            - run: cf auth "admin" "password"
+            - run: cf push exchange-value
+          org: sampleOrg
+          space: dev
