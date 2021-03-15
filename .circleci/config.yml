@@ -11,9 +11,7 @@ workflows:
       - cloudfoundry/push:
           appname: exchange-value
           build_steps:
-            - cloudfoundry/install:
-                version: '7' # Install Cloud Foundry CLI Version 7
-          # set Cloud Foundry Instance Endpoint
+            - run: cloudfoundry/install
           endpoint: $CF_API
           # Set Organization
           org: $CF_ORG
