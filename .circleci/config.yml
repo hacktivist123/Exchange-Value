@@ -5,7 +5,7 @@ jobs:
     steps: 
           - run: sudo apt-get update
           - run: sudo apt-get install -y ca-certificates jq
-          - run: sudo echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" > /etc/apt/sources.list.d/cloudfoundry-cli.list
+          - run: echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" | sudo /etc/apt/sources.list.d/cloudfoundry-cli.list
           - run: sudo apt-get update
           - run: sudo apt-get install cf7-cli
 
