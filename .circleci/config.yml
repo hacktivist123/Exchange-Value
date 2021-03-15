@@ -10,15 +10,7 @@ workflows:
     jobs:
       - cloudfoundry/push:
           appname: exchange-value
-          endpoint: $CF_API --skip-ssl-validation
-          build_steps:
-            - run: sudo apt-get update
-            - run: sudo apt-get install -y ca-certificates jq
-            - run: sudo touch /etc/apt/sources.list.d/cloudfoundry-cli.list
-            - run: echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" | sudo tee -a /etc/apt/sources.list.d/cloudfoundry-cli.list
-            - run: sudo apt-get update
-            - run: sudo apt-get install dpkg
-            - run: sudo apt-get install cf7-cli
+          endpoint: --skip-ssl-validation $CF_API 
           # Set Orgnization
           org: $CF_ORG
           # Set Space
