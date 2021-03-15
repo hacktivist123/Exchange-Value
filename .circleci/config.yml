@@ -1,32 +1,13 @@
-version: 2.0
-jobs:
-  install-cf:
-    machine: true
-    steps: 
-          - run: sudo apt-get update
-          - run: sudo apt-get install -y ca-certificates jq
-          - run: sudo touch /etc/apt/sources.list.d/cloudfoundry-cli.list
-          - run: echo "deb [trusted=yes] https://packages.cloudfoundry.org/debian stable main" | sudo tee -a /etc/apt/sources.list.d/cloudfoundry-cli.list
-          - run: sudo apt-get update
-          - run: sudo apt-get install dpkg
-          - run: sudo apt-get install cf7-cli
-
-  login-and-deploy:
-    requires:
-      - install-cf
-    machine: true
-    steps:
-          - run: cf -v
-          - run: cf api --skip-ssl-validation "$CF_API"
-          - run: cf auth "$CF_USER" "$CF_PASSWORD"
-          - run: cf target -o "$CF_ORG" "$CF_SPACE"
-          - run: cf push exchange-value
-
+version: '2.1'
+orbs:
+  cloudfoundry: circleci/cloudfoundry@1.0.0
 workflows:
-  version: 2
-  deploy-to-cf:
+  build-deploy:
     jobs:
-      - install-cf
-      - login-and-deploy:
-          requires:
-          - install-cf
+      - cloudfoundry/push:
+          appname: your-app
+          build_steps:
+            - run: cf api --skip-ssl-validation "$CF_API"
+            - run: cf auth "$CF_USER" "$CF_USER"
+          org: sampleOrg
+          space: dev
