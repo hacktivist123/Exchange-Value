@@ -12,8 +12,8 @@ workflows:
           appname: exchange-value
           build_steps:
             - cloudfoundry/install:
-              version: '7'
-          endpoint: $CF_API
+                version: '7'
+          endpoint: $CF_API --skip-ssl-validation
           # Set Organization
           org: $CF_ORG
           # Set Space
