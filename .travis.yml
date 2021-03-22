@@ -6,7 +6,7 @@ deploy:
   provider: cloudfoundry
   username: admin
   password: $CF_PASSWORD
-  api: $CF_API --skip-ssl-validation
+  api: https://api.35.192.46.62.xip.io --skip-ssl-validation
   organization: sampleOrg
   space: dev
   app_name: exchange-value
