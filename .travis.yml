@@ -4,6 +4,7 @@ node_js:
 before_deploy: 'echo deployment is starting.....'
 deploy:
   provider: cloudfoundry
+  edge: true
   username: admin
   password: $CF_PASSWORD
   api: https://api.35.192.46.62.xip.io --skip-ssl-validation
