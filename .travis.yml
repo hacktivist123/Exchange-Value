@@ -1,3 +1,4 @@
+language: node_js
 before_deploy: echo deployment is starting
 deploy:
   provider: cloudfoundry
@@ -10,4 +11,4 @@ deploy:
   app_name: exchange-value
   edge: true
 after_deploy:
-- cf apps
+  - cf apps
