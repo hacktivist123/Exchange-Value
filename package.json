@@ -5,7 +5,7 @@
   "repository": "https://github.com/hacktivist123/Exchange-Value",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter spec",
     "start": "node server.js",
     "dev": "nodemon -w"
   },
@@ -15,10 +15,13 @@
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
+    "mocha": "^8.3.2",
+    "request": "^2.88.2",
     "semantic-ui-calendar": "0.0.8",
     "semantic-ui-css": "^2.4.1",
     "vanilla-router": "^1.2.7"
