@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - node
-before_deploy: echo deployment is starting
+before_deploy: deployment is starting.....
 deploy:
   provider: cloudfoundry
   username: admin
@@ -10,6 +10,5 @@ deploy:
   organization: sampleOrg
   space: dev
   app_name: exchange-value
-  edge: true
 after_deploy:
   - cf apps
