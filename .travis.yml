@@ -5,9 +5,8 @@ before_deploy: echo deployment is starting
 deploy:
   provider: cloudfoundry
   username: admin
-  password:
-    secure: vxZjcEBz4SAf1CeyjUJylBTNxooQFyh04V2f+TN1BIg952ijiAlYtBLXaDwMNTaeVpE10eDDhGhewK+b9h9MQJwPghvOKs1LjFxUNFBp7SDc7Y+SeBR675c3PvnjPsVg7dPZmpcvCRq+L7pqKQgxu2nfLWHU+HJTj1/+jEgnbPiOpyiPnEr9h55ShubpmkJ3g9ue0qHpSV0Z4te5BIeucAPt2BbcHpvzV2HGNqmimG+tvAcBgd5U+QmWx8iWnAuIvw4zMOozUo/eOet8SroIHYSXsKGrFgLwwLMIbUBNBe9ldOerTgbDXe05YSeLrxK8xiubkHEY4piijLj6+xz1OkesH17fLyop9lJyI5I3eYDkihLXFwLJFd39zLLZZJ+wK7CKM10xXIByIgJp9mLFcLCzcXuQtyVYriD4MDPx4acqLLqB+DmFqEEbOoOLuT6ZRD+SIFQv9TpERuoVBGwO9jkQ3YFksttVY73rPfZkkTKvDdgLwppLem/6LCMPDVIkVDlDeKPVxeBP6NyyXL5uX9Lkpij0qPRUKCW8vLtbckQ+jRjhm0R2OE1Eda0ohRvhOsvuUzrddoDTSoIMPMOIrBxECkDjwLboWexKyp2F3zU9LreBVSJBAXBdoXRU1v0zbrO7dxk+CDI+2hkqu68v+2iNue0kQHCsuGep8XCQZ08=
-  api: https://api.35.192.46.62.xip.io --skip-ssl-validation
+  password: $CF_PASSWORD
+  api: $CF_API --skip-ssl-validation
   organization: sampleOrg
   space: dev
   app_name: exchange-value
