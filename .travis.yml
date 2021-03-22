@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - node
-before_deploy: deployment is starting.....
+before_deploy: 'deployment is starting.....'
 deploy:
   provider: cloudfoundry
   username: admin
