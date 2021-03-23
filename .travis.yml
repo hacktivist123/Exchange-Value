@@ -7,7 +7,7 @@ deploy:
   edge: true
   username: admin
   password: $CF_PASSWORD
-  api: https://api.35.192.46.62.xip.io --skip-ssl-validation
+  api: http://api.35.192.46.62.xip.io --skip-ssl-validation
   organization: sampleOrg
   space: dev
   app_name: exchange-value
