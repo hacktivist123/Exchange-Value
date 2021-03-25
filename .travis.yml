@@ -11,6 +11,5 @@ deploy:
   organization: sampleOrg
   space: shedrack
   app_name: exchange-value
-  --3
 after_deploy:
   - cf apps
