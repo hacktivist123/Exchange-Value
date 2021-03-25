@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 15
+  - node
 before_deploy: 'echo deployment is starting.....'
 deploy:
   provider: cloudfoundry
@@ -11,5 +11,6 @@ deploy:
   organization: sampleOrg
   space: shedrack
   app_name: exchange-value
+  --v3
 after_deploy:
   - cf apps
