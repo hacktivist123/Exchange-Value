@@ -9,7 +9,7 @@ deploy:
   password: $CF_PASSWORD
   api: http://api.35.192.46.62.xip.io --skip-ssl-validation
   organization: sampleOrg
-  space: dev
+  space: shedrack
   app_name: exchange-value
 after_deploy:
   - cf apps
