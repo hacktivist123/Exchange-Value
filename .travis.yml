@@ -7,10 +7,10 @@ deploy:
   edge: true
   username: admin
   password: $CF_PASSWORD
-  api: http://api.35.192.46.62.xip.io --skip-ssl-validation
+  api: http://api.35.192.46.62.xip.io --skip-ssl-validation --v3
   organization: sampleOrg
   space: shedrack
   app_name: exchange-value
-  version: 3
+  --3
 after_deploy:
   - cf apps
