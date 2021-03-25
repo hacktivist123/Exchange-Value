@@ -1,6 +1,4 @@
-language: node_js
-node_js:
-  - node
+language: generic
 before_deploy: 'echo deployment is starting.....'
 deploy:
   provider: cloudfoundry
