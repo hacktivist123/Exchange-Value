@@ -23,6 +23,7 @@ jobs:
             cf api --skip-ssl-validation "$CF_API"
             cf auth "$CF_USER" "$CF_PASSWORD"
             cf target -o "$CF_ORG"
+            cf target -s "$CF_SPACE"
             cf set-env exchange-value API_KEY $API_KEY
             cf set-env exchange-value CONVERTER_API_KEY $CONVERTER_API_KEY
             cf set-env exchange-value SYMBOLS $SYMBOLS
