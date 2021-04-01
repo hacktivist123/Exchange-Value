@@ -20,7 +20,7 @@ app.use(
 // Parse POST data as JSON
 app.use(bodyParser.json())
 
-// Provide access to node_modules folder
+// Provide node access to node_modules folder
 app.use('/scripts', express.static(`${__dirname}/node_modules/`))
 
 const errorHandler = (err, req, res) => {
