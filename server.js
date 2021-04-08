@@ -7,7 +7,7 @@ const { convertCurrency } = require('./lib/free-currency-service')
 const app = express()
 const port = process.env.PORT || 3000
 
-// Set public folder as root
+// Set public folders as root
 app.use(express.static('public'))
 
 // Parse POST data as URL encoded data
