@@ -24,12 +24,12 @@ jobs:
             cf auth "$CF_USER" "$CF_PASSWORD"
             cf target -o "$CF_ORG" 
             cf target -s "$CF_SPACE"
-            cf set-env exchange-value API_KEY $API_KEY
-            cf set-env exchange-value CONVERTER_API_KEY $CONVERTER_API_KEY
-            cf set-env exchange-value SYMBOLS $SYMBOLS
+            cf set-env exchange-rate-spa API_KEY $API_KEY
+            cf set-env exchange-rate-spa CONVERTER_API_KEY $CONVERTER_API_KEY
+            cf set-env exchange-rate-spa SYMBOLS $SYMBOLS
       - run: 
           name: Push application to Cloud Foundry
-          command: cf push exchange-value
+          command: cf push exchange-rate-spa
 
 workflows:
     version: 2
